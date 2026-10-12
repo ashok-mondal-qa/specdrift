@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+test-results/
+playwright-report/
+*.log
+.env
+.env.*
+
+# Private: account rules and career research
+CLAUDE.local.md
+docs/research/project-selection-report.md
+docs/research/job_market_demand.md
+docs/research/hiring_value_and_feasibility.md
+docs/research/testing_pain_points.md

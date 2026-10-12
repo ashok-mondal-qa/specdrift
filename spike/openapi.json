@@ -1,0 +1,52 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Sample users API", "version": "1.0.0" },
+  "servers": [{ "url": "/api" }],
+  "paths": {
+    "/users": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "All users",
+            "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/User" } } } }
+          }
+        }
+      },
+      "post": {
+        "requestBody": { "content": { "application/json": { "schema": { "$ref": "#/components/schemas/NewUser" } } } },
+        "responses": {
+          "201": { "description": "Created", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }],
+      "get": {
+        "responses": {
+          "200": { "description": "One user", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } },
+          "404": { "description": "Not found" }
+        }
+      },
+      "delete": { "responses": { "204": { "description": "Deleted" } } }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": ["id", "fullName", "email"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "integer" },
+          "fullName": { "type": "string" },
+          "email": { "type": "string" }
+        }
+      },
+      "NewUser": {
+        "type": "object",
+        "required": ["fullName", "email"],
+        "properties": { "fullName": { "type": "string" }, "email": { "type": "string" } }
+      }
+    }
+  }
+}

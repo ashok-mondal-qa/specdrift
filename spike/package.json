@@ -1,0 +1,22 @@
+{
+  "name": "specdrift-stage1-spike",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "app": "node app/server.mjs",
+    "test": "playwright test tests",
+    "try:capture": "playwright test experiments/capture",
+    "try:pw-radar": "playwright test experiments/pw-radar && cd experiments/pw-radar && pw-radar -s ../../openapi.json -i coverage-output",
+    "try:tracecov": "cd experiments/tracecov && playwright test -c tracecov.config.ts && node har.mjs",
+    "try:mock-validator": "node experiments/mock-validator/validate.mjs",
+    "try:redocly": "playwright test experiments/capture/har.spec.ts && redocly drift experiments/run.har --api openapi.json --match-mode basepath --coverage",
+    "try:addon": "playwright test experiments/addon && node experiments/addon/check.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@redocly/cli": "^2.62.1",
+    "@tracecov/playwright": "^0.25.3",
+    "openapi-mock-validator": "^0.3.0",
+    "pw-radar": "^0.2.2"
+  }
+}

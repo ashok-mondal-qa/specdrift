@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Users</title>
+<h1>Users</h1>
+<ul id="users"></ul>
+<script>
+  // The frontend still reads `name`. The backend now sends `fullName`.
+  fetch('/api/users')
+    .then((res) => res.json())
+    .then((users) => {
+      document.getElementById('users').innerHTML = users.map((u) => `<li>${u.name}</li>`).join('')
+    })
+</script>

@@ -1,0 +1,9 @@
+node_modules/
+test-results/
+playwright-report/
+experiments/run.har
+experiments/pw-radar/coverage-output/
+experiments/pw-radar/pw-radar-report.html
+experiments/pw-radar/pw-radar-results.json
+experiments/tracecov/coverage.md
+specdrift-results/
